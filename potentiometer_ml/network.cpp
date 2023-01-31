@@ -12,9 +12,8 @@ nn_2layermlp::nn_2layermlp()
     potentiometer=NULL;
 }
 
-nn_2layermlp::nn_2layermlp(const int input_dim,const int output_dim)
+nn_2layermlp::nn_2layermlp(const int input_dim,const int hidden_dim, const int output_dim)
 {
-    int hidden_dim=3;
     linear1=nn_linear(input_dim,hidden_dim);
     linear2=nn_linear(hidden_dim,output_dim);
     activ=nn_sigmoid();
@@ -35,4 +34,9 @@ double* nn_2layermlp::forward(const double *input,const double* weight)
     classifier.forward(sum2,output_node2);
     
     return sum2;
+}
+
+void nn_2layermlp::set_potentiometer(double* w)
+{
+    potentiometer = w;
 }

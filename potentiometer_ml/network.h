@@ -6,16 +6,16 @@
 class nn_2layermlp {
 public:
     nn_2layermlp();
-    nn_2layermlp(const int input_dim, const int hidden_dim, const int output_dim);
+    nn_2layermlp(const int input_dim, const int hidden_dim = 3, const int output_dim = 3);
     
-    double* forward(const double* input,const double* weight);
-    void set_potentiometer(double* w);
+    double* forward(const double* input, double** weight);
+    void set_potentiometer(double** w);
 private:
     nn_linear linear1;
     nn_linear linear2;
     nn_sigmoid activ;
     nn_softmax classifier;
-    double* potentiometer; // 가변저항 가중치
+    double** potentiometer; // 가변저항 가중치
 };
 
 

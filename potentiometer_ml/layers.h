@@ -16,7 +16,7 @@ public:
 
     int get_output_nodes() const;
 
-    double* forward(const double* input, const double* weight);
+    double* forward(const double* input, double** weight);
 private:
     int input_nodes;
     int output_nodes;

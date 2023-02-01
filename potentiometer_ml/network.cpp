@@ -1,5 +1,4 @@
 #include "network.h"
-#include <iostream>
 
 using namespace std;
 
@@ -9,7 +8,7 @@ nn_2layermlp::nn_2layermlp()
     linear2=nn_linear();
     activ=nn_sigmoid();
     classifier=nn_softmax();
-    potentiometer=NULL;
+    potentiometer=0;
 }
 
 nn_2layermlp::nn_2layermlp(const int input_dim,const int hidden_dim, const int output_dim)
@@ -18,10 +17,10 @@ nn_2layermlp::nn_2layermlp(const int input_dim,const int hidden_dim, const int o
     linear2=nn_linear(hidden_dim,output_dim);
     activ=nn_sigmoid();
     classifier=nn_softmax();
-    potentiometer=NULL;
+    potentiometer=0;
 }
 
-double* nn_2layermlp::forward(const double *input,const double* weight)
+double* nn_2layermlp::forward(const double *input,double** weight)
 {
     int output_node1=linear1.get_output_nodes();
     int output_node2=linear2.get_output_nodes();
@@ -33,10 +32,12 @@ double* nn_2layermlp::forward(const double *input,const double* weight)
     sum2=linear2.forward(sum1,potentiometer);
     classifier.forward(sum2,output_node2);
     
+    delete[] sum1;
+
     return sum2;
 }
 
-void nn_2layermlp::set_potentiometer(double* w)
+void nn_2layermlp::set_potentiometer(double** w)
 {
     potentiometer = w;
 }

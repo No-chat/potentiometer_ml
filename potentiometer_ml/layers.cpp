@@ -1,7 +1,5 @@
 #include "layers.h"
-#include <iostream>
-#include <cmath>
-#include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -17,19 +15,18 @@ nn_linear::nn_linear(const int input_dim, const int output_dim)
     output_nodes = output_dim;
 }
 
-double* nn_linear::forward(const double* input, const double* weight)
+double* nn_linear::forward(const double* input, double** weight)
 {
     int w_size = input_nodes * output_nodes;
     double* output_arr = new double[output_nodes];
-    for (int output_index = 0; output_index < w_size; output_index += input_nodes)
+    for (int output_index = 0; output_index < output_nodes; output_index++)
     {
         double sum = 0;
         for (int input_index = 0; input_index < input_nodes; input_index++)
         {
-            sum += (input[input_index] * weight[output_index + input_index]);
+            sum += (input[input_index] * weight[input_index][output_index]);
         }
-        int new_index = (output_index / input_nodes);
-        output_arr[new_index] = sum;
+        output_arr[output_index] = sum;
     }
 
     return output_arr;

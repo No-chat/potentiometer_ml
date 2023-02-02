@@ -20,6 +20,11 @@ nn_2layermlp::nn_2layermlp(const int input_dim,const int hidden_dim, const int o
     potentiometer=0;
 }
 
+nn_2layermlp::~nn_2layermlp()
+{
+    if (potentiometer != 0) delete[] potentiometer;
+}
+
 double* nn_2layermlp::forward(const double *input,double** weight)
 {
     int output_node1=linear1.get_output_nodes();

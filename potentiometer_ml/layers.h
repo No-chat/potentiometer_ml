@@ -3,8 +3,6 @@
     추후 weight 파라미터를 어떤 데이터 형식으로 받는 지 알게 될 경우 변경
 */
 
-using namespace std;
-
 #ifndef LAYERS_H
 #define LAYERS_H
 
@@ -43,4 +41,4 @@ public:
 };
 
 
-#endif LAYERS_H
+#endif

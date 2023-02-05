@@ -1,6 +1,5 @@
 #include "network.h"
 
-using namespace std;
 
 nn_2layermlp::nn_2layermlp()
 {

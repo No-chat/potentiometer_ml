@@ -16,6 +16,7 @@ private:
     nn_linear linear2;
     nn_sigmoid activ;
     nn_softmax classifier;
+    nn_binarize binarize;
     double** potentiometer; // 가변저항 가중치
 };
 

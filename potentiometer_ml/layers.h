@@ -1,8 +1,3 @@
-/*
-    nn_linear class의 forward함수의 파라미터들 중 가중치는 1차원 배열로 reshape한 후 받는 다고 가정
-    추후 weight 파라미터를 어떤 데이터 형식으로 받는 지 알게 될 경우 변경
-*/
-
 #ifndef LAYERS_H
 #define LAYERS_H
 
@@ -40,5 +35,11 @@ public:
     void forward(double* input_sum, int col);
 };
 
+class nn_binarize
+{
+public:
+    void forward(double* input_sum,int col);
+    
+};
 
 #endif

@@ -69,3 +69,14 @@ void nn_softmax::forward(double* input_sum, int col)
         input_sum[col_index] = exp(input_sum[col_index]) / sum;
     }
 }
+
+void nn_binarize::forward(double *input_sum, int col)
+{
+    for (int col_index=0; col_index<col; col_index++) {
+        if (input_sum[col_index]>0.5) {
+            input_sum[col_index]=1.0;
+        } else {
+            input_sum[col_index]=0.0;
+        }
+    }
+}
